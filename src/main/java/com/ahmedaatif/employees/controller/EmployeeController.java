@@ -11,6 +11,7 @@ import com.ahmedaatif.employees.service.EmployeeService;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -29,9 +30,13 @@ public class EmployeeController {
         return this.employeeService.getAllEmployees();
     }
 
+    @RequestMapping("/{id}")
+    public Employee getEmployees(@PathVariable int id) throws IOException {
+        return this.employeeService.getEmployee(id);
+    }
+
     @PostMapping
     public EmployeeCreationDto addEmployee(@RequestBody EmployeeDto employee) throws IOException {
-
         return this.employeeService.addEmployee(employee);
     }
 

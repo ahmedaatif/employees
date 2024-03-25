@@ -10,4 +10,6 @@ public interface EmployeeRepository {
     EmployeeCreationDto addEmployee(Employee employee) throws IOException;
 
     List<Employee> getEmployees() throws IOException;
+
+    Employee getEmployee(int id) throws IOException;
 }

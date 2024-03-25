@@ -29,6 +29,11 @@ public class EmployeeServiceImp implements EmployeeService {
     }
 
     @Override
+    public Employee getEmployee(int id) throws IOException {
+        return employeeRepository.getEmployee(id);
+    }
+
+    @Override
     public EmployeeCreationDto addEmployee(EmployeeDto employee) throws IOException {
         Employee employeeModel = employeeDtoConverter.convertEmployeeDtoToEmployee(employee);
 

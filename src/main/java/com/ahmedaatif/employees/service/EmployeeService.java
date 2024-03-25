@@ -10,5 +10,7 @@ import com.ahmedaatif.employees.model.Employee;
 public interface EmployeeService {
     List<Employee> getAllEmployees() throws IOException;
 
+    Employee getEmployee(int id) throws IOException;
+
     public EmployeeCreationDto addEmployee(EmployeeDto employee) throws IOException;
 }

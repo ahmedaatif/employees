@@ -1,6 +1,5 @@
 package com.ahmedaatif.employees.repository;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import org.springframework.core.io.ResourceLoader;
@@ -25,6 +24,18 @@ public class EmployeeRepositoryImp implements EmployeeRepository {
     ObjectMapper mapper = new ObjectMapper();
     return mapper.readValue(resource.getInputStream(), new TypeReference<List<Employee>>() {
     });
+  }
+
+  public Employee getEmployee(int id) throws IOException {
+    List<Employee> employees = getEmployees();
+
+    for (Employee employee : employees) {
+      if (employee.id == id) {
+        return employee;
+      }
+    }
+
+    return null;
   }
 
   public EmployeeCreationDto addEmployee(Employee newEmployee) throws IOException {
