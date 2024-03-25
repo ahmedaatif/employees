@@ -5,7 +5,7 @@ public class Employee {
     public String firstName;
     public String lastName;
     public String dateOfBirth;
-    public String Salary;
+    public String salary;
     public String joinDate;
     public String department;
 }

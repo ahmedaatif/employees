@@ -2,6 +2,7 @@ package com.ahmedaatif.employees.service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
@@ -24,8 +25,25 @@ public class EmployeeServiceImp implements EmployeeService {
     }
 
     @Override
-    public List<Employee> getAllEmployees() throws IOException {
-        return employeeRepository.getEmployees();
+    public List<Employee> getAllEmployees(String name, String fromSalary, String toSalary) throws IOException {
+        List<Employee> employees = employeeRepository.getEmployees();
+
+        if (name == null && fromSalary == null && toSalary == null) {
+            return employees;
+        } else {
+            List<Employee> filtered = employees.stream()
+                    .filter(employee -> (name != null
+                            && (employee.firstName.contains(name) || employee.lastName.contains(name))) || name == null)
+                    .filter(employee -> (fromSalary != null
+                            && (Integer.parseInt(fromSalary) <= Integer.parseInt(employee.salary)))
+                            || fromSalary == null)
+                    .filter(employee -> (toSalary != null
+                            && (Integer.parseInt(employee.salary) <= Integer.parseInt(toSalary)) || toSalary == null))
+                    .collect(Collectors.toList());
+
+            return filtered;
+        }
+
     }
 
     @Override

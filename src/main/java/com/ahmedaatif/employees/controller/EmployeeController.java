@@ -1,6 +1,7 @@
 package com.ahmedaatif.employees.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ahmedaatif.employees.dto.EmployeeCreationDto;
@@ -26,8 +27,10 @@ public class EmployeeController {
     }
 
     @RequestMapping
-    public List<Employee> getEmployees() throws IOException {
-        return this.employeeService.getAllEmployees();
+    public List<Employee> getEmployees(@RequestParam(required = false) String name,
+            @RequestParam(required = false) String fromSalary,
+            @RequestParam(required = false) String toSalary) throws IOException {
+        return this.employeeService.getAllEmployees(name, fromSalary, toSalary);
     }
 
     @RequestMapping("/{id}")
