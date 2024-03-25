@@ -7,5 +7,5 @@ public class Employee {
     public String dateOfBirth;
     public String salary;
     public String joinDate;
-    public String department;
+    public String departement;
 }

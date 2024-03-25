@@ -16,7 +16,7 @@ public class EmployeeDtoConverter {
         toReturn.joinDate = dto.joinDate;
         toReturn.dateOfBirth = dto.dateOfBirth;
         toReturn.salary = dto.salary;
-        toReturn.department = dto.department;
+        toReturn.departement = dto.departement;
 
         return toReturn;
     }
